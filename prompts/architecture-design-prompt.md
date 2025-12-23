@@ -11,6 +11,11 @@ Given:
   - Project Management under clients with status tracking (Active/Completed/Archived), default PO numbers, internal notes, project dashboards
   - Reporting Center with P&L, Project Profitability, Balance Sheet, AR aging reports, date/project/client filters, CSV/PDF exports
   - Settings for user profile, business defaults, tax rates, numbering prefixes, email templates, archive/export/import
+- Database Schema (condensed):
+  - Core entities: user_profiles, clients, projects, documents, document_line_items, payments, expenses, categories, attachments, notes, tax_rates
+  - Key relationships: users→clients→projects→documents; documents→line_items+payments; projects→expenses; all entities have user_id for tenancy
+  - Tenancy: Row-level security (RLS) on all tables with user_id = auth.uid()
+  - Monetary values: Stored as USD cents (integer) to avoid floating precision
 - Budget: Lean startup budget - minimal UI, high efficiency, shared components, template-driven outputs, cost-effective hosting (Cloudflare, Railway, Supabase)
 
 Design a system architecture including:
