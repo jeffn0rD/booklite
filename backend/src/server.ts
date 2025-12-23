@@ -85,13 +85,24 @@ async function buildServer() {
     };
   });
 
+  // Import all route modules
+  const { documentRoutes } = await import('./features/documents/routes/document.routes.js');
+  const { projectRoutes } = await import('./features/projects/routes/project.routes.js');
+  const { paymentRoutes } = await import('./features/payments/routes/payment.routes.js');
+  const { expenseRoutes } = await import('./features/expenses/routes/expense.routes.js');
+  const { categoryRoutes } = await import('./features/categories/routes/category.routes.js');
+  const { taxRateRoutes } = await import('./features/tax-rates/routes/tax-rate.routes.js');
+  const { userProfileRoutes } = await import('./features/user-profile/routes/user-profile.routes.js');
+  
   // Register feature routes
   await server.register(clientRoutes, { prefix: '/v1' });
-  // TODO: Register other feature routes
-  // await server.register(projectRoutes, { prefix: '/v1' });
-  // await server.register(documentRoutes, { prefix: '/v1' });
-  // await server.register(paymentRoutes, { prefix: '/v1' });
-  // await server.register(expenseRoutes, { prefix: '/v1' });
+  await server.register(documentRoutes, { prefix: '/v1' });
+  await server.register(projectRoutes, { prefix: '/v1' });
+  await server.register(paymentRoutes, { prefix: '/v1' });
+  await server.register(expenseRoutes, { prefix: '/v1' });
+  await server.register(categoryRoutes, { prefix: '/v1' });
+  await server.register(taxRateRoutes, { prefix: '/v1' });
+  await server.register(userProfileRoutes, { prefix: '/v1' });
 
   // Error handlers
   server.setErrorHandler(errorHandler);
