@@ -343,14 +343,77 @@ tests/
 - Automated testing
 - Clear documentation
 
-## Migration Path
+## Existing Implementation
 
-For existing code in `booklite/api/`:
-1. Move to `backend/src/features/clients/`
-2. Reorganize by feature module structure
-3. Update imports and paths
-4. Add tests
-5. Update documentation
+The project already has a partial API implementation in `booklite/api/` that serves as a reference implementation:
+
+```
+booklite/api/
+├── routes/
+│   └── clients.ts          # Client CRUD endpoints (reference)
+├── schemas/
+│   └── client.ts           # Zod validation schemas (reference)
+├── services/
+│   └── client.ts           # Business logic layer (reference)
+├── middleware/             # Middleware directory (empty)
+├── utils/                  # Utilities directory (empty)
+└── README.md              # Implementation guide
+```
+
+This implementation demonstrates:
+- Complete CRUD operations for clients
+- Zod schema validation
+- Service layer pattern
+- Supabase integration
+- Error handling
+- Authentication middleware usage
+
+### Integration with New Structure
+
+The existing `booklite/api/` code should be viewed as a **reference implementation** that demonstrates the patterns to follow when implementing the full backend structure. When creating the new `backend/` directory:
+
+1. **Use as Template**: The client implementation serves as a template for other features
+2. **Keep as Reference**: Maintain `booklite/api/` as documentation/reference
+3. **Implement New Structure**: Create `backend/src/features/` following the same patterns
+4. **Expand Coverage**: Implement remaining features (projects, documents, payments, etc.)
+
+### Migration Strategy
+
+When ready to implement the full backend:
+
+1. **Phase 1: Setup Backend Structure**
+   - Create `backend/` directory with proper structure
+   - Set up TypeScript, Fastify, and dependencies
+   - Configure environment and database connection
+
+2. **Phase 2: Migrate Client Feature**
+   - Copy patterns from `booklite/api/routes/clients.ts`
+   - Adapt to new structure: `backend/src/features/clients/`
+   - Add comprehensive tests
+   - Update imports and paths
+
+3. **Phase 3: Implement Remaining Features**
+   - Use client feature as template
+   - Implement projects, documents, payments, expenses, etc.
+   - Follow same patterns for consistency
+
+4. **Phase 4: Shared Code**
+   - Extract common patterns to `backend/src/shared/`
+   - Create reusable middleware
+   - Build utility functions
+
+5. **Phase 5: Testing &amp; Documentation**
+   - Add comprehensive test coverage
+   - Update API documentation
+   - Create deployment guides
+
+### Reference Implementation Benefits
+
+Keeping `booklite/api/` as reference provides:
+- **Working Examples**: Demonstrates complete feature implementation
+- **Pattern Library**: Shows best practices for routes, schemas, services
+- **Quick Reference**: Easy to reference when implementing new features
+- **Documentation**: Serves as living documentation of implementation patterns
 
 ## Next Steps
 
@@ -361,7 +424,7 @@ For existing code in `booklite/api/`:
 5. Create Docker configurations
 6. Set up GitHub Actions
 7. Write setup documentation
-8. Migrate existing code
+8. Implement features using reference patterns
 
 ---
 
