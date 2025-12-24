@@ -14,8 +14,7 @@ import { UnauthorizedError } from '../errors/index.js';
  * Uses Supabase Auth for token validation.
  */
 export async function authenticate(
-  request: FastifyRequest,
-  reply: FastifyReply
+  request: FastifyRequest
 ): Promise<void> {
   try {
     // Get authorization header
@@ -55,7 +54,7 @@ export async function authenticate(
  */
 export async function optionalAuthenticate(
   request: FastifyRequest,
-  reply: FastifyReply
+  _reply: FastifyReply
 ): Promise<void> {
   try {
     const authHeader = request.headers.authorization;

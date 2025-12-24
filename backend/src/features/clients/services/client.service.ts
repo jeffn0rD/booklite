@@ -6,7 +6,7 @@
 
 import { SupabaseClient } from '@supabase/supabase-js';
 import { Client } from '../../../shared/types/index.js';
-import { NotFoundError, BusinessLogicError, dbErrorToApiError } from '../../../shared/errors/index.js';
+import { NotFoundError, dbErrorToApiError } from '../../../shared/errors/index.js';
 import { CreateClientInput, UpdateClientInput, ListClientsQuery } from '../../../shared/schemas/client.schema.js';
 
 export class ClientService {

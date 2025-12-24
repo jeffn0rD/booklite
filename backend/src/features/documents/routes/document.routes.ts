@@ -14,13 +14,11 @@ import {
   listDocumentsQuerySchema,
   documentIdParamSchema,
   finalizeDocumentSchema,
-  sendDocumentSchema,
   CreateDocumentInput,
   UpdateDocumentInput,
   ListDocumentsQuery,
   DocumentIdParam,
   FinalizeDocumentInput,
-  SendDocumentInput,
 } from '../../../shared/schemas/document.schema.js';
 
 export const documentRoutes: FastifyPluginAsync = async (fastify) => {

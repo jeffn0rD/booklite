@@ -5,7 +5,7 @@
  */
 
 import { SupabaseClient } from '@supabase/supabase-js';
-import { Document, DocumentLineItem } from '../../../shared/types/index.js';
+import { Document } from '../../../shared/types/index.js';
 import { 
   NotFoundError, 
   BusinessLogicError, 

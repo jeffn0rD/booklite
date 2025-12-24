@@ -5,14 +5,14 @@
  */
 
 import { FastifyRequest, FastifyReply } from 'fastify';
-import { ZodSchema } from 'zod';
+import { ZodSchema, ZodTypeDef, ZodType } from 'zod';
 import { zodErrorToValidationError } from '../errors/index.js';
 
 /**
  * Validate request body
  */
-export function validateBody<T>(schema: ZodSchema<T>) {
-  return async (request: FastifyRequest, reply: FastifyReply): Promise<void> => {
+export function validateBody<T>(schema: ZodSchema<T, ZodTypeDef, any>) {
+  return async (request: FastifyRequest, _reply: FastifyReply): Promise<void> => {
     try {
       request.body = schema.parse(request.body);
     } catch (error) {
@@ -24,8 +24,8 @@ export function validateBody<T>(schema: ZodSchema<T>) {
 /**
  * Validate request query parameters
  */
-export function validateQuery<T>(schema: ZodSchema<T>) {
-  return async (request: FastifyRequest, reply: FastifyReply): Promise<void> => {
+export function validateQuery<T>(schema: ZodType<T, ZodTypeDef, any>) {
+  return async (request: FastifyRequest, _reply: FastifyReply): Promise<void> => {
     try {
       request.query = schema.parse(request.query);
     } catch (error) {
@@ -37,8 +37,8 @@ export function validateQuery<T>(schema: ZodSchema<T>) {
 /**
  * Validate request params
  */
-export function validateParams<T>(schema: ZodSchema<T>) {
-  return async (request: FastifyRequest, reply: FastifyReply): Promise<void> => {
+export function validateParams<T>(schema: ZodSchema<T, ZodTypeDef, any>) {
+  return async (request: FastifyRequest, _reply: FastifyReply): Promise<void> => {
     try {
       request.params = schema.parse(request.params);
     } catch (error) {
