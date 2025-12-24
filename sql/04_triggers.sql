@@ -149,7 +149,6 @@ CREATE TRIGGER trg_recalculate_document_totals_delete
 -- =====================================================
 -- PAYMENT TRACKING AND INVOICE STATUS
 -- =====================================================
-
 -- Update invoice paid amounts and status when payments change
 CREATE OR REPLACE FUNCTION update_invoice_payment_status()
 RETURNS TRIGGER AS $$

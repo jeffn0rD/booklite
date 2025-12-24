@@ -52,7 +52,7 @@ const envSchema = z.object({
   PDF_SERVICE_URL: z.string().url().optional(),
 
   // Monitoring
-  SENTRY_DSN: z.string().url().optional(),
+  SENTRY_DSN: z.string().url().optional().or(z.literal("")),
 });
 
 /**

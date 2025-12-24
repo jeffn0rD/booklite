@@ -223,16 +223,21 @@ ALTER TABLE official_copies
 -- ADDITIONAL CHECK CONSTRAINTS
 -- =====================================================
 
+-- Following is not valid due to sub query in constraint
+-- This constraint is already enforced via trg_validate_same_user_payment_invoice
 -- Payments: must reference invoice type documents
-ALTER TABLE payments
-    ADD CONSTRAINT chk_payments_invoice_type 
-    CHECK (
-        EXISTS (
-            SELECT 1 FROM documents 
-            WHERE documents.id = payments.invoice_id 
-            AND documents.type = 'invoice'
-        )
-    ) NOT VALID;
+--ALTER TABLE payments
+--    ADD CONSTRAINT chk_payments_invoice_type 
+--    CHECK (
+--        EXISTS (
+--            SELECT 1 FROM documents 
+--            WHERE documents.id = payments.invoice_id 
+--            AND documents.type = 'invoice'
+--        )
+--    ) NOT VALID;
+--
+-------------------------------------------------------------------
+-------------------------------------------------------------------
 
 -- Expenses: linked_invoice_id required when billing_status = 'billed'
 ALTER TABLE expenses
@@ -241,17 +246,21 @@ ALTER TABLE expenses
         billing_status != 'billed' OR linked_invoice_id IS NOT NULL
     );
 
+-- Invalid due to subquery in constraint
 -- Expenses: linked_invoice_id must be invoice type
-ALTER TABLE expenses
-    ADD CONSTRAINT chk_expenses_linked_invoice_type 
-    CHECK (
-        linked_invoice_id IS NULL OR
-        EXISTS (
-            SELECT 1 FROM documents 
-            WHERE documents.id = expenses.linked_invoice_id 
-            AND documents.type = 'invoice'
-        )
-    ) NOT VALID;
+-- replaced with trg_chk_expenses_linked_invoice
+--
+--ALTER TABLE expenses
+--    ADD CONSTRAINT chk_expenses_linked_invoice_type 
+--    CHECK (
+--        linked_invoice_id IS NULL OR
+--        EXISTS (
+--            SELECT 1 FROM documents 
+--            WHERE documents.id = expenses.linked_invoice_id 
+--            AND documents.type = 'invoice'
+--        )
+--    ) NOT VALID;
+--
 
 -- Documents: cannot archive unpaid invoices
 ALTER TABLE documents
@@ -270,17 +279,19 @@ ALTER TABLE documents
         issue_date IS NOT NULL
     );
 
+-- invalid subquery in constraint
+-- replaced with trg__projects_origin_quote_type
 -- Projects: origin_quote_id must be quote type
-ALTER TABLE projects
-    ADD CONSTRAINT chk_projects_origin_quote_type 
-    CHECK (
-        origin_quote_id IS NULL OR
-        EXISTS (
-            SELECT 1 FROM documents 
-            WHERE documents.id = projects.origin_quote_id 
-            AND documents.type = 'quote'
-        )
-    ) NOT VALID;
+--ALTER TABLE projects
+--    ADD CONSTRAINT chk_projects_origin_quote_type 
+--    CHECK (
+--        origin_quote_id IS NULL OR
+--        EXISTS (
+--            SELECT 1 FROM documents 
+--            WHERE documents.id = projects.origin_quote_id 
+--            AND documents.type = 'quote'
+--        )
+--    ) NOT VALID;
 
 -- =====================================================
 -- SAME-USER VALIDATION FUNCTIONS
@@ -382,6 +393,52 @@ CREATE TRIGGER trg_validate_same_user_payment_invoice
     BEFORE INSERT OR UPDATE ON payments
     FOR EACH ROW
     EXECUTE FUNCTION validate_same_user_payment_invoice();
+
+-------------------------------------------------------------
+-- Expenses: linked_invoice_id must be invoice type
+--
+CREATE OR REPLACE FUNCTION enforce_expenses_linked_invoice_type()
+RETURNS TRIGGER AS $$
+BEGIN
+	IF NEW.linked_invoice_id IS NOT NULL THEN
+		IF NOT EXISTS (
+			SELECT 1 FROM documents d
+			WHERE d.id = NEW.linked_invoice_id
+			AND d.type = 'invoice'
+			AND d.user_id = NEW.user_id
+		) THEN
+			RAISE EXCEPTION 'Expenses.linked_invoice_id must reference an invoice document of the same user';
+		END IF;
+	END IF;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trg_chk_expenses_linked_invoice
+BEFORE INSERT OR UPDATE ON expenses
+FOR EACH ROW
+EXECUTE FUNCTION enforce_expenses_linked_invoice_type();
+
+-- Projects: origin_quote_id must be quote type
+CREATE OR REPLACE FUNCTION enforce_projects_origin_quote_type()
+RETURNS TRIGGER AS $$
+BEGIN
+	IF NEW.origin_quote_id IS NOT NULL THEN
+		IF NOT EXISTS (
+			SELECT 1 FROM documents d
+			WHERE d.id = NEW.origin_quote_id
+			AND d.type = 'quote'
+			AND d.user_id = NEW.user_id
+		) THEN
+			RAISE EXCEPTION 'Projects.origin_quote_id must reference a quote document of the same user';
+		END IF;
+	END IF;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trg__projects_origin_quote_type
+BEFORE INSERT OR UPDATE ON projects
+FOR EACH ROW
+EXECUTE FUNCTION enforce_projects_origin_quote_type();
 
 -- =====================================================
 -- COMMENTS
