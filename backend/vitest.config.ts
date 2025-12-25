@@ -8,6 +8,15 @@ export default defineConfig({
     setupFiles: ['./tests/setup/test-setup.ts'],
     include: ['tests/**/*.test.ts'],
     exclude: ['node_modules', 'dist'],
+    env: {
+      NODE_ENV: 'test',
+      LOG_LEVEL: 'silent',
+      JWT_SECRET: 'test-jwt-secret-key-32-chars-minimum-for-testing',
+      SUPABASE_URL: 'http://localhost:54321',
+      SUPABASE_ANON_KEY: 'test-anon-key',
+      SUPABASE_SERVICE_ROLE_KEY: 'test-service-role-key',
+      SENTRY_DSN: '',
+    },
     coverage: {
       provider: 'v8',
       reporter: ['text', 'json', 'html', 'lcov'],
