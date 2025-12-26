@@ -32,12 +32,11 @@ export interface Client {
   user_id: string;
   name: string;
   email: string | null;
-  phone: string | null;
   billing_address: Address | null;
   tax_vat_id: string | null;
   default_tax_rate_id: number | null;
   default_payment_terms_days: number | null;
-  notes: string | null;
+  default_currency: string;
   archived_at: string | null;
   created_at: string;
   updated_at: string;

@@ -9,7 +9,7 @@ import { z } from 'zod';
 /**
  * Project status enum
  */
-export const projectStatusSchema = z.enum(['Active', 'Completed', 'OnHold']);
+export const projectStatusSchema = z.enum(['Active', 'Completed', 'Archived']);
 
 /**
  * Create project schema
