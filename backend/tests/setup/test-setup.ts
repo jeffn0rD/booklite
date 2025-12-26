@@ -10,11 +10,11 @@ import { createClient, SupabaseClient } from '@supabase/supabase-js';
 
 // Test environment variables - Set these first before any imports
 process.env.NODE_ENV = 'test';
-process.env.LOG_LEVEL = 'silent';
-process.env.JWT_SECRET = 'test-jwt-secret-key-32-chars-minimum-for-testing';
-process.env.SUPABASE_URL = 'http://localhost:54321';
-process.env.SUPABASE_ANON_KEY = 'test-anon-key';
-process.env.SUPABASE_SERVICE_ROLE_KEY = 'test-service-role-key';
+process.env.LOG_LEVEL = 'debug';
+process.env.JWT_SECRET = 'sp3l+Y4HuxpaCVZqKYp2sAzMuGr4ZFnuPbB60rT0tOFfIupOBWZrmOjhUNRWR82FV8FSy6THc4oPuzo7yYDPrQ==';
+process.env.SUPABASE_URL = 'https://mflygqueancjuxjscfne.supabase.co';
+process.env.SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1mbHlncXVlYW5janV4anNjZm5lIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjY1NzY0MDYsImV4cCI6MjA4MjE1MjQwNn0.sTRnh_MUFy1L4SPUIbcLdN4YddWvVI-x2SNVKMCcmew';
+process.env.SUPABASE_SERVICE_ROLE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1mbHlncXVlYW5janV4anNjZm5lIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2NjU3NjQwNiwiZXhwIjoyMDgyMTUyNDA2fQ.2E8BCTbPSXMHD-0KQiVdfuqCPZNj77qIJZAj1m6mlfE';
 process.env.SENTRY_DSN = '';
 
 // Global test database client

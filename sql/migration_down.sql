@@ -10,14 +10,14 @@
 -- Start transaction
 BEGIN;
 
-\echo 'WARNING: This will delete all Booklite database objects and data!'
-\echo 'Press Ctrl+C within 5 seconds to cancel...'
+--\echo 'WARNING: This will delete all Booklite database objects and data!'
+--\echo 'Press Ctrl+C within 5 seconds to cancel...'
 SELECT pg_sleep(5);
 
 -- =====================================================
 -- DROP RLS POLICIES
 -- =====================================================
-\echo 'Dropping RLS policies...'
+--\echo 'Dropping RLS policies...'
 
 -- User Profiles
 DROP POLICY IF EXISTS "Users can delete own profile" ON user_profiles;
@@ -106,7 +106,7 @@ DROP POLICY IF EXISTS "Users can view own official copies" ON official_copies;
 -- =====================================================
 -- DROP TRIGGERS
 -- =====================================================
-\echo 'Dropping triggers...'
+--\echo 'Dropping triggers...'
 
 DROP TRIGGER IF EXISTS trg_calculate_balance_due ON documents;
 DROP TRIGGER IF EXISTS trg_validate_document_status_transition ON documents;
@@ -139,7 +139,7 @@ DROP TRIGGER IF EXISTS trg_validate_same_user_client_project ON projects;
 -- =====================================================
 -- DROP FUNCTIONS
 -- =====================================================
-\echo 'Dropping functions...'
+--\echo 'Dropping functions...'
 
 DROP FUNCTION IF EXISTS calculate_balance_due();
 DROP FUNCTION IF EXISTS validate_document_status_transition();
@@ -160,7 +160,7 @@ DROP FUNCTION IF EXISTS validate_same_user_client_project();
 -- =====================================================
 -- DROP TABLES (in reverse dependency order)
 -- =====================================================
-\echo 'Dropping tables...'
+--\echo 'Dropping tables...'
 
 DROP TABLE IF EXISTS official_copies CASCADE;
 DROP TABLE IF EXISTS email_logs CASCADE;
@@ -179,12 +179,12 @@ DROP TABLE IF EXISTS user_profiles CASCADE;
 
 -- =====================================================
 -- DROP EXTENSIONS (if they were created by this migration)
--- =====================================================
+--=====================================================
 -- Note: Only drop if no other schemas are using these extensions
 -- DROP EXTENSION IF EXISTS "uuid-ossp";
 
 -- Commit transaction
 COMMIT;
 
-\echo 'Rollback completed successfully!'
-\echo 'All Booklite database objects have been removed.'
+--\echo 'Rollback completed successfully!'
+--\echo 'All Booklite database objects have been removed.'

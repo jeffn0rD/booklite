@@ -13,46 +13,46 @@
 -- =====================================================
 -- TEST USER IDs (Replace with actual UUIDs)
 -- =====================================================
--- User 1: '1e30f54a-1214-48c0-a020-d214e832fee5' test@example.com
--- User 2: '9ca3887a-ba50-4481-b77c-a31fddbb3cef' test@jeffreypaulramenllc.com
--- User 3: 'ca955bf3-1120-4ce9-9a3a-208bb5d69bad' test2@jeffreypaulramenllc.com
+-- User 1: '00000000-0000-0000-0000-000000000001'
+-- User 2: '00000000-0000-0000-0000-000000000002'
+-- User 3: '00000000-0000-0000-0000-000000000003'
 
 -- =====================================================
 -- TAX RATES
 -- =====================================================
 INSERT INTO tax_rates (user_id, name, rate_percent, is_default) VALUES
 -- User 1 tax rates
-('1e30f54a-1214-48c0-a020-d214e832fee5', 'Standard VAT', 20.0000, true),
-('1e30f54a-1214-48c0-a020-d214e832fee5', 'Reduced VAT', 5.0000, false),
-('1e30f54a-1214-48c0-a020-d214e832fee5', 'Zero Rate', 0.0000, false),
+('00000000-0000-0000-0000-000000000001', 'Standard VAT', 20.0000, true),
+('00000000-0000-0000-0000-000000000001', 'Reduced VAT', 5.0000, false),
+('00000000-0000-0000-0000-000000000001', 'Zero Rate', 0.0000, false),
 
 -- User 2 tax rates
-('9ca3887a-ba50-4481-b77c-a31fddbb3cef', 'Sales Tax', 8.5000, true),
-('9ca3887a-ba50-4481-b77c-a31fddbb3cef', 'No Tax', 0.0000, false),
+('00000000-0000-0000-0000-000000000002', 'Sales Tax', 8.5000, true),
+('00000000-0000-0000-0000-000000000002', 'No Tax', 0.0000, false),
 
 -- User 3 tax rates
-('ca955bf3-1120-4ce9-9a3a-208bb5d69bad', 'GST', 10.0000, true),
-('ca955bf3-1120-4ce9-9a3a-208bb5d69bad', 'PST', 7.0000, false);
+('00000000-0000-0000-0000-000000000003', 'GST', 10.0000, true),
+('00000000-0000-0000-0000-000000000003', 'PST', 7.0000, false);
 
 -- =====================================================
 -- CATEGORIES
 -- =====================================================
 INSERT INTO categories (user_id, name, description) VALUES
 -- User 1 categories
-('1e30f54a-1214-48c0-a020-d214e832fee5', 'Software & Tools', 'Software licenses and development tools'),
-('1e30f54a-1214-48c0-a020-d214e832fee5', 'Travel', 'Business travel expenses'),
-('1e30f54a-1214-48c0-a020-d214e832fee5', 'Office Supplies', 'General office supplies and equipment'),
-('1e30f54a-1214-48c0-a020-d214e832fee5', 'Professional Services', 'Legal, accounting, and consulting fees'),
+('00000000-0000-0000-0000-000000000001', 'Software & Tools', 'Software licenses and development tools'),
+('00000000-0000-0000-0000-000000000001', 'Travel', 'Business travel expenses'),
+('00000000-0000-0000-0000-000000000001', 'Office Supplies', 'General office supplies and equipment'),
+('00000000-0000-0000-0000-000000000001', 'Professional Services', 'Legal, accounting, and consulting fees'),
 
 -- User 2 categories
-('9ca3887a-ba50-4481-b77c-a31fddbb3cef', 'Marketing', 'Marketing and advertising expenses'),
-('9ca3887a-ba50-4481-b77c-a31fddbb3cef', 'Equipment', 'Hardware and equipment purchases'),
-('9ca3887a-ba50-4481-b77c-a31fddbb3cef', 'Subscriptions', 'Monthly service subscriptions'),
+('00000000-0000-0000-0000-000000000002', 'Marketing', 'Marketing and advertising expenses'),
+('00000000-0000-0000-0000-000000000002', 'Equipment', 'Hardware and equipment purchases'),
+('00000000-0000-0000-0000-000000000002', 'Subscriptions', 'Monthly service subscriptions'),
 
 -- User 3 categories
-('ca955bf3-1120-4ce9-9a3a-208bb5d69bad', 'Training', 'Professional development and training'),
-('ca955bf3-1120-4ce9-9a3a-208bb5d69bad', 'Insurance', 'Business insurance premiums'),
-('ca955bf3-1120-4ce9-9a3a-208bb5d69bad', 'Utilities', 'Internet, phone, and utilities');
+('00000000-0000-0000-0000-000000000003', 'Training', 'Professional development and training'),
+('00000000-0000-0000-0000-000000000003', 'Insurance', 'Business insurance premiums'),
+('00000000-0000-0000-0000-000000000003', 'Utilities', 'Internet, phone, and utilities');
 
 -- =====================================================
 -- USER PROFILES
@@ -63,7 +63,7 @@ INSERT INTO user_profiles (
     numbering_quote_prefix, numbering_invoice_prefix, numbering_padding
 ) VALUES
 (
-    '1e30f54a-1214-48c0-a020-d214e832fee5',
+    '00000000-0000-0000-0000-000000000001',
     'TechConsult Pro',
     'TechConsult Professional Services Ltd',
     '123 Innovation Drive',
@@ -78,7 +78,7 @@ INSERT INTO user_profiles (
     4
 ),
 (
-    '9ca3887a-ba50-4481-b77c-a31fddbb3cef',
+    '00000000-0000-0000-0000-000000000002',
     'Digital Solutions Inc',
     'Digital Solutions Incorporated',
     '456 Tech Boulevard',
@@ -93,7 +93,7 @@ INSERT INTO user_profiles (
     5
 ),
 (
-    'ca955bf3-1120-4ce9-9a3a-208bb5d69bad',
+    '00000000-0000-0000-0000-000000000003',
     'Creative Designs Studio',
     'Creative Designs Studio Pty Ltd',
     '789 Design Street',
@@ -117,7 +117,7 @@ INSERT INTO clients (
 ) VALUES
 -- User 1 clients
 (
-    '1e30f54a-1214-48c0-a020-d214e832fee5',
+    '00000000-0000-0000-0000-000000000001',
     'Acme Corporation',
     'accounts@acmecorp.com',
     '{"line1": "100 Business Park", "city": "Manchester", "region": "Greater Manchester", "postal_code": "M1 1AA", "country": "GB"}'::jsonb,
@@ -126,7 +126,7 @@ INSERT INTO clients (
     'USD'
 ),
 (
-    '1e30f54a-1214-48c0-a020-d214e832fee5',
+    '00000000-0000-0000-0000-000000000001',
     'Global Tech Solutions',
     'billing@globaltech.com',
     '{"line1": "200 Tech Avenue", "city": "Birmingham", "region": "West Midlands", "postal_code": "B1 1AA", "country": "GB"}'::jsonb,
@@ -135,7 +135,7 @@ INSERT INTO clients (
     'USD'
 ),
 (
-    '1e30f54a-1214-48c0-a020-d214e832fee5',
+    '00000000-0000-0000-0000-000000000001',
     'StartupXYZ',
     'finance@startupxyz.io',
     '{"line1": "50 Innovation Hub", "city": "London", "region": "Greater London", "postal_code": "EC1A 1BB", "country": "GB"}'::jsonb,
@@ -146,7 +146,7 @@ INSERT INTO clients (
 
 -- User 2 clients
 (
-    '9ca3887a-ba50-4481-b77c-a31fddbb3cef',
+    '00000000-0000-0000-0000-000000000002',
     'Enterprise Systems LLC',
     'ap@enterprisesys.com',
     '{"line1": "300 Corporate Drive", "city": "New York", "region": "NY", "postal_code": "10001", "country": "US"}'::jsonb,
@@ -155,7 +155,7 @@ INSERT INTO clients (
     'USD'
 ),
 (
-    '9ca3887a-ba50-4481-b77c-a31fddbb3cef',
+    '00000000-0000-0000-0000-000000000002',
     'Retail Innovations',
     'payments@retailinnovations.com',
     '{"line1": "400 Commerce Street", "city": "Los Angeles", "region": "CA", "postal_code": "90001", "country": "US"}'::jsonb,
@@ -166,7 +166,7 @@ INSERT INTO clients (
 
 -- User 3 clients
 (
-    'ca955bf3-1120-4ce9-9a3a-208bb5d69bad',
+    '00000000-0000-0000-0000-000000000003',
     'Melbourne Marketing Group',
     'accounts@melbournemarketing.com.au',
     '{"line1": "500 Marketing Lane", "city": "Melbourne", "region": "VIC", "postal_code": "3000", "country": "AU"}'::jsonb,
@@ -175,7 +175,7 @@ INSERT INTO clients (
     'USD'
 ),
 (
-    'ca955bf3-1120-4ce9-9a3a-208bb5d69bad',
+    '00000000-0000-0000-0000-000000000003',
     'Sydney Startups',
     'finance@sydneystartups.com.au',
     '{"line1": "600 Startup Way", "city": "Sydney", "region": "NSW", "postal_code": "2001", "country": "AU"}'::jsonb,
@@ -192,7 +192,7 @@ INSERT INTO projects (
 ) VALUES
 -- User 1 projects
 (
-    '1e30f54a-1214-48c0-a020-d214e832fee5',
+    '00000000-0000-0000-0000-000000000001',
     1,
     'Website Redesign 2024',
     'Active',
@@ -200,7 +200,7 @@ INSERT INTO projects (
     'Complete website overhaul with modern design and improved UX'
 ),
 (
-    '1e30f54a-1214-48c0-a020-d214e832fee5',
+    '00000000-0000-0000-0000-000000000001',
     1,
     'Mobile App Development',
     'Active',
@@ -208,7 +208,7 @@ INSERT INTO projects (
     'Native iOS and Android app development'
 ),
 (
-    '1e30f54a-1214-48c0-a020-d214e832fee5',
+    '00000000-0000-0000-0000-000000000001',
     2,
     'Cloud Migration',
     'Active',
@@ -216,7 +216,7 @@ INSERT INTO projects (
     'Migration of legacy systems to AWS cloud infrastructure'
 ),
 (
-    '1e30f54a-1214-48c0-a020-d214e832fee5',
+    '00000000-0000-0000-0000-000000000001',
     3,
     'MVP Development',
     'Completed',
@@ -226,7 +226,7 @@ INSERT INTO projects (
 
 -- User 2 projects
 (
-    '9ca3887a-ba50-4481-b77c-a31fddbb3cef',
+    '00000000-0000-0000-0000-000000000002',
     4,
     'ERP System Integration',
     'Active',
@@ -234,7 +234,7 @@ INSERT INTO projects (
     'Integration of new ERP system with existing infrastructure'
 ),
 (
-    '9ca3887a-ba50-4481-b77c-a31fddbb3cef',
+    '00000000-0000-0000-0000-000000000002',
     5,
     'E-commerce Platform',
     'Active',
@@ -244,7 +244,7 @@ INSERT INTO projects (
 
 -- User 3 projects
 (
-    'ca955bf3-1120-4ce9-9a3a-208bb5d69bad',
+    '00000000-0000-0000-0000-000000000003',
     6,
     'Brand Identity Refresh',
     'Active',
@@ -252,7 +252,7 @@ INSERT INTO projects (
     'Complete brand identity redesign including logo and marketing materials'
 ),
 (
-    'ca955bf3-1120-4ce9-9a3a-208bb5d69bad',
+    '00000000-0000-0000-0000-000000000003',
     7,
     'Website Development',
     'Active',
@@ -264,12 +264,12 @@ INSERT INTO projects (
 -- NUMBER SEQUENCES
 -- =====================================================
 INSERT INTO number_sequences (user_id, type, prefix, current_value, padding) VALUES
-('1e30f54a-1214-48c0-a020-d214e832fee5', 'quote', 'Q-', 15, 4),
-('1e30f54a-1214-48c0-a020-d214e832fee5', 'invoice', 'INV-', 42, 4),
-('9ca3887a-ba50-4481-b77c-a31fddbb3cef', 'quote', 'QT-', 8, 5),
-('9ca3887a-ba50-4481-b77c-a31fddbb3cef', 'invoice', 'INV-', 23, 5),
-('ca955bf3-1120-4ce9-9a3a-208bb5d69bad', 'quote', 'QUOTE-', 12, 4),
-('ca955bf3-1120-4ce9-9a3a-208bb5d69bad', 'invoice', 'INVOICE-', 31, 4);
+('00000000-0000-0000-0000-000000000001', 'quote', 'Q-', 15, 4),
+('00000000-0000-0000-0000-000000000001', 'invoice', 'INV-', 42, 4),
+('00000000-0000-0000-0000-000000000002', 'quote', 'QT-', 8, 5),
+('00000000-0000-0000-0000-000000000002', 'invoice', 'INV-', 23, 5),
+('00000000-0000-0000-0000-000000000003', 'quote', 'QUOTE-', 12, 4),
+('00000000-0000-0000-0000-000000000003', 'invoice', 'INVOICE-', 31, 4);
 
 -- =====================================================
 -- DOCUMENTS (Quotes and Invoices)
@@ -282,7 +282,7 @@ INSERT INTO documents (
 ) VALUES
 -- User 1 documents
 (
-    '1e30f54a-1214-48c0-a020-d214e832fee5',
+    '00000000-0000-0000-0000-000000000001',
     'quote',
     'Q-0015',
     1,
@@ -304,7 +304,7 @@ INSERT INTO documents (
     '2024-01-15 10:30:00+00'
 ),
 (
-    '1e30f54a-1214-48c0-a020-d214e832fee5',
+    '00000000-0000-0000-0000-000000000001',
     'invoice',
     'INV-0042',
     1,
@@ -326,7 +326,7 @@ INSERT INTO documents (
     '2024-02-01 09:00:00+00'
 ),
 (
-    '1e30f54a-1214-48c0-a020-d214e832fee5',
+    '00000000-0000-0000-0000-000000000001',
     'invoice',
     'INV-0043',
     2,
@@ -350,7 +350,7 @@ INSERT INTO documents (
 
 -- User 2 documents
 (
-    '9ca3887a-ba50-4481-b77c-a31fddbb3cef',
+    '00000000-0000-0000-0000-000000000002',
     'quote',
     'QT-00008',
     4,
@@ -372,7 +372,7 @@ INSERT INTO documents (
     '2024-01-10 11:00:00+00'
 ),
 (
-    '9ca3887a-ba50-4481-b77c-a31fddbb3cef',
+    '00000000-0000-0000-0000-000000000002',
     'invoice',
     'INV-00023',
     5,
@@ -396,7 +396,7 @@ INSERT INTO documents (
 
 -- User 3 documents
 (
-    'ca955bf3-1120-4ce9-9a3a-208bb5d69bad',
+    '00000000-0000-0000-0000-000000000003',
     'quote',
     'QUOTE-0012',
     6,
@@ -418,7 +418,7 @@ INSERT INTO documents (
     '2024-01-25 13:00:00+00'
 ),
 (
-    'ca955bf3-1120-4ce9-9a3a-208bb5d69bad',
+    '00000000-0000-0000-0000-000000000003',
     'invoice',
     'INVOICE-0031',
     7,
@@ -450,7 +450,7 @@ INSERT INTO document_line_items (
 ) VALUES
 -- Quote Q-0015 line items
 (
-    '1e30f54a-1214-48c0-a020-d214e832fee5',
+    '00000000-0000-0000-0000-000000000001',
     1,
     1,
     'UI/UX Design - Homepage and 5 key pages',
@@ -463,7 +463,7 @@ INSERT INTO document_line_items (
     600000
 ),
 (
-    '1e30f54a-1214-48c0-a020-d214e832fee5',
+    '00000000-0000-0000-0000-000000000001',
     1,
     2,
     'Frontend Development - Responsive implementation',
@@ -476,7 +476,7 @@ INSERT INTO document_line_items (
     960000
 ),
 (
-    '1e30f54a-1214-48c0-a020-d214e832fee5',
+    '00000000-0000-0000-0000-000000000001',
     1,
     3,
     'Content Migration and SEO Optimization',
@@ -491,7 +491,7 @@ INSERT INTO document_line_items (
 
 -- Invoice INV-0042 line items
 (
-    '1e30f54a-1214-48c0-a020-d214e832fee5',
+    '00000000-0000-0000-0000-000000000001',
     2,
     1,
     'Website Redesign - Milestone 1: Design Phase',
@@ -506,7 +506,7 @@ INSERT INTO document_line_items (
 
 -- Invoice INV-0043 line items
 (
-    '1e30f54a-1214-48c0-a020-d214e832fee5',
+    '00000000-0000-0000-0000-000000000001',
     3,
     1,
     'Cloud Architecture Assessment',
@@ -519,7 +519,7 @@ INSERT INTO document_line_items (
     720000
 ),
 (
-    '1e30f54a-1214-48c0-a020-d214e832fee5',
+    '00000000-0000-0000-0000-000000000001',
     3,
     2,
     'Migration Planning and Documentation',
@@ -532,7 +532,7 @@ INSERT INTO document_line_items (
     900000
 ),
 (
-    '1e30f54a-1214-48c0-a020-d214e832fee5',
+    '00000000-0000-0000-0000-000000000001',
     3,
     3,
     'Infrastructure Setup - AWS Services',
@@ -547,7 +547,7 @@ INSERT INTO document_line_items (
 
 -- Quote QT-00008 line items
 (
-    '9ca3887a-ba50-4481-b77c-a31fddbb3cef',
+    '00000000-0000-0000-0000-000000000002',
     4,
     1,
     'ERP System Analysis and Requirements Gathering',
@@ -560,7 +560,7 @@ INSERT INTO document_line_items (
     1302000
 ),
 (
-    '9ca3887a-ba50-4481-b77c-a31fddbb3cef',
+    '00000000-0000-0000-0000-000000000002',
     4,
     2,
     'Custom Middleware Development',
@@ -573,7 +573,7 @@ INSERT INTO document_line_items (
     3797500
 ),
 (
-    '9ca3887a-ba50-4481-b77c-a31fddbb3cef',
+    '00000000-0000-0000-0000-000000000002',
     4,
     3,
     'Integration Testing and Deployment',
@@ -586,7 +586,7 @@ INSERT INTO document_line_items (
     1953000
 ),
 (
-    '9ca3887a-ba50-4481-b77c-a31fddbb3cef',
+    '00000000-0000-0000-0000-000000000002',
     4,
     4,
     'Training and Documentation',
@@ -601,7 +601,7 @@ INSERT INTO document_line_items (
 
 -- Invoice INV-00023 line items
 (
-    '9ca3887a-ba50-4481-b77c-a31fddbb3cef',
+    '00000000-0000-0000-0000-000000000002',
     5,
     1,
     'E-commerce Platform Development - Initial Deposit (50%)',
@@ -616,7 +616,7 @@ INSERT INTO document_line_items (
 
 -- Quote QUOTE-0012 line items
 (
-    'ca955bf3-1120-4ce9-9a3a-208bb5d69bad',
+    '00000000-0000-0000-0000-000000000003',
     6,
     1,
     'Brand Strategy and Research',
@@ -629,7 +629,7 @@ INSERT INTO document_line_items (
     1650000
 ),
 (
-    'ca955bf3-1120-4ce9-9a3a-208bb5d69bad',
+    '00000000-0000-0000-0000-000000000003',
     6,
     2,
     'Logo Design - 3 Concepts with Revisions',
@@ -642,7 +642,7 @@ INSERT INTO document_line_items (
     2200000
 ),
 (
-    'ca955bf3-1120-4ce9-9a3a-208bb5d69bad',
+    '00000000-0000-0000-0000-000000000003',
     6,
     3,
     'Brand Style Guide and Assets',
@@ -657,7 +657,7 @@ INSERT INTO document_line_items (
 
 -- Invoice INVOICE-0031 line items
 (
-    'ca955bf3-1120-4ce9-9a3a-208bb5d69bad',
+    '00000000-0000-0000-0000-000000000003',
     7,
     1,
     'Website Development - 50% Deposit',
@@ -678,7 +678,7 @@ INSERT INTO payments (
 ) VALUES
 -- Payment for INV-0042 (partial)
 (
-    '1e30f54a-1214-48c0-a020-d214e832fee5',
+    '00000000-0000-0000-0000-000000000001',
     2,
     '2024-02-15',
     1500000,
@@ -688,7 +688,7 @@ INSERT INTO payments (
 
 -- Payments for INV-0043 (full payment in 2 installments)
 (
-    '1e30f54a-1214-48c0-a020-d214e832fee5',
+    '00000000-0000-0000-0000-000000000001',
     3,
     '2024-02-10',
     3000000,
@@ -696,7 +696,7 @@ INSERT INTO payments (
     'TXN-20240210-001'
 ),
 (
-    '1e30f54a-1214-48c0-a020-d214e832fee5',
+    '00000000-0000-0000-0000-000000000001',
     3,
     '2024-02-25',
     3000000,
@@ -706,7 +706,7 @@ INSERT INTO payments (
 
 -- Payment for INVOICE-0031 (full payment)
 (
-    'ca955bf3-1120-4ce9-9a3a-208bb5d69bad',
+    '00000000-0000-0000-0000-000000000003',
     7,
     '2024-02-12',
     2200000,
@@ -724,7 +724,7 @@ INSERT INTO expenses (
 ) VALUES
 -- User 1 expenses
 (
-    '1e30f54a-1214-48c0-a020-d214e832fee5',
+    '00000000-0000-0000-0000-000000000001',
     '2024-01-10',
     'Adobe Creative Cloud',
     1,
@@ -737,7 +737,7 @@ INSERT INTO expenses (
     'unbilled'
 ),
 (
-    '1e30f54a-1214-48c0-a020-d214e832fee5',
+    '00000000-0000-0000-0000-000000000001',
     '2024-01-15',
     'British Airways',
     2,
@@ -750,7 +750,7 @@ INSERT INTO expenses (
     'unbilled'
 ),
 (
-    '1e30f54a-1214-48c0-a020-d214e832fee5',
+    '00000000-0000-0000-0000-000000000001',
     '2024-01-20',
     'Office Depot',
     3,
@@ -765,7 +765,7 @@ INSERT INTO expenses (
 
 -- User 2 expenses
 (
-    '9ca3887a-ba50-4481-b77c-a31fddbb3cef',
+    '00000000-0000-0000-0000-000000000002',
     '2024-01-12',
     'Google Ads',
     5,
@@ -778,7 +778,7 @@ INSERT INTO expenses (
     'unbilled'
 ),
 (
-    '9ca3887a-ba50-4481-b77c-a31fddbb3cef',
+    '00000000-0000-0000-0000-000000000002',
     '2024-01-18',
     'Dell Technologies',
     6,
@@ -791,7 +791,7 @@ INSERT INTO expenses (
     'unbilled'
 ),
 (
-    '9ca3887a-ba50-4481-b77c-a31fddbb3cef',
+    '00000000-0000-0000-0000-000000000002',
     '2024-02-01',
     'AWS',
     7,
@@ -806,7 +806,7 @@ INSERT INTO expenses (
 
 -- User 3 expenses
 (
-    'ca955bf3-1120-4ce9-9a3a-208bb5d69bad',
+    '00000000-0000-0000-0000-000000000003',
     '2024-01-15',
     'Udemy',
     8,
@@ -819,7 +819,7 @@ INSERT INTO expenses (
     'unbilled'
 ),
 (
-    'ca955bf3-1120-4ce9-9a3a-208bb5d69bad',
+    '00000000-0000-0000-0000-000000000003',
     '2024-01-22',
     'Hiscox Insurance',
     9,
@@ -832,7 +832,7 @@ INSERT INTO expenses (
     'unbilled'
 ),
 (
-    'ca955bf3-1120-4ce9-9a3a-208bb5d69bad',
+    '00000000-0000-0000-0000-000000000003',
     '2024-02-01',
     'Telstra',
     10,
@@ -851,19 +851,19 @@ INSERT INTO expenses (
 INSERT INTO notes (user_id, entity, entity_id, body) VALUES
 -- Client notes
 (
-    '1e30f54a-1214-48c0-a020-d214e832fee5',
+    '00000000-0000-0000-0000-000000000001',
     'client',
     1,
     'Preferred contact: Email during business hours. Decision maker: Sarah Johnson (CTO)'
 ),
 (
-    '1e30f54a-1214-48c0-a020-d214e832fee5',
+    '00000000-0000-0000-0000-000000000001',
     'client',
     2,
     'Large enterprise client. Requires detailed documentation and compliance checks for all deliverables.'
 ),
 (
-    '9ca3887a-ba50-4481-b77c-a31fddbb3cef',
+    '00000000-0000-0000-0000-000000000002',
     'client',
     4,
     'Very responsive client. Prefers weekly status updates via video call.'
@@ -871,25 +871,25 @@ INSERT INTO notes (user_id, entity, entity_id, body) VALUES
 
 -- Project notes
 (
-    '1e30f54a-1214-48c0-a020-d214e832fee5',
+    '00000000-0000-0000-0000-000000000001',
     'project',
     1,
     'Client wants to launch before Q2. Tight deadline but manageable with current resources.'
 ),
 (
-    '1e30f54a-1214-48c0-a020-d214e832fee5',
+    '00000000-0000-0000-0000-000000000001',
     'project',
     3,
     'Complex migration requiring careful planning. Weekly sync meetings scheduled with client IT team.'
 ),
 (
-    '9ca3887a-ba50-4481-b77c-a31fddbb3cef',
+    '00000000-0000-0000-0000-000000000002',
     'project',
     5,
     'Integration with legacy systems proving challenging. May need additional time for testing.'
 ),
 (
-    'ca955bf3-1120-4ce9-9a3a-208bb5d69bad',
+    '00000000-0000-0000-0000-000000000003',
     'project',
     7,
     'Client very happy with initial concepts. Approved to proceed with development phase.'
@@ -903,7 +903,7 @@ INSERT INTO email_logs (
     provider_message_id, sent_at
 ) VALUES
 (
-    '1e30f54a-1214-48c0-a020-d214e832fee5',
+    '00000000-0000-0000-0000-000000000001',
     1,
     'accounts@acmecorp.com',
     'Quote Q-0015 - Website Redesign 2024',
@@ -913,7 +913,7 @@ INSERT INTO email_logs (
     '2024-01-15 10:30:00+00'
 ),
 (
-    '1e30f54a-1214-48c0-a020-d214e832fee5',
+    '00000000-0000-0000-0000-000000000001',
     2,
     'accounts@acmecorp.com',
     'Invoice INV-0042 - Website Redesign Milestone 1',
@@ -923,7 +923,7 @@ INSERT INTO email_logs (
     '2024-02-01 09:00:00+00'
 ),
 (
-    '9ca3887a-ba50-4481-b77c-a31fddbb3cef',
+    '00000000-0000-0000-0000-000000000002',
     5,
     'payments@retailinnovations.com',
     'Invoice INV-00023 - E-commerce Platform Development',

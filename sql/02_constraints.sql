@@ -410,6 +410,7 @@ BEGIN
 			RAISE EXCEPTION 'Expenses.linked_invoice_id must reference an invoice document of the same user';
 		END IF;
 	END IF;
+	RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
 
@@ -432,6 +433,7 @@ BEGIN
 			RAISE EXCEPTION 'Projects.origin_quote_id must reference a quote document of the same user';
 		END IF;
 	END IF;
+	RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
 
